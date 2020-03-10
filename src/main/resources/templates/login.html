@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-theme.css">
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.js"></script>
+    <script src="../static/bootstrap/js/npm.js"></script>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal">
+                    <span class="heading">用户登录</span>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="用户名或电子邮件">
+
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="密　码">
+
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div>没有账号，<a href="register.html">点此注册</a></div>
+                    <div class="form-group">
+                        <div class="main-checkbox">
+                            <input type="checkbox" value="None" id="checkbox1" name="check"/>
+                            <label for="checkbox1"></label>
+                        </div>
+                        <span class="text">记住我</span>
+                        <button type="submit" class="btn btn-default">登录</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
