@@ -5,13 +5,26 @@
     <title>众食谱官网</title>
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.css}">
-    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/all/js/jquery.js}"></script>
     <script th:src="@{/bootstrap/js/bootstrap.js}"></script>
-    <script th:src="@{/bootstrap/js/npm.js}"></script>
+    <script>
+
+    </script>
 </head>
 
 <body>
-<nav class="navbar navbar-default">
+<style>
+    .navbar navbar-default{
+        background-color: #ffe877;
+    }
+    .warning-message{
+        padding-left: 15px;
+        color: red;
+    }
+</style>
+
+
+<nav class="navbar navbar-default" th:fragment="topbar">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -27,8 +40,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
+                <li><a th:href="@{/welcome}">首页</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -49,22 +61,22 @@
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a data-toggle="modal" data-target="#login" href=""><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                <li><button style="margin-top: 8px" type="button" class="btn btn-default" data-toggle="modal" data-target="#login" th:if="${name == null}" ><span class="glyphicon glyphicon-log-in"></span>&nbsp;登录</button></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-user"></span> 我 <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" th:unless="${name == null}" th:text="${nickname}"><span class="glyphicon glyphicon-user"></span>  <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">消息中心</a></li>
                         <li><a href="#">个人资料</a></li>
                         <li><a href="#">我的贡献</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">退出登录</a></li>
+                        <li><a th:href="@{/logout}">退出登录</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
     <!-- 登录窗口 -->
-    <div id="login" class="modal fade">
+    <div id="login" class="modal fade" th:fragment="login">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -75,26 +87,30 @@
                 <div class="modal-title">
                     <h1 class="text-center">登录</h1>
                 </div>
+                <div class="warning-message" th:text="${msg}"></div>
                 <div class="modal-body">
-                    <form class="form-group" th:action="@{/login}">
+                    <form class="form-group" th:action="@{/login}" th:method="get">
                         <div class="form-group">
                             <label>用户名</label>
-                            <input name="username" class="form-control" type="text" placeholder="请输入用户名">
+                            <input id="name" name="username" class="form-control" type="text" placeholder="请输入用户名" required="required">
                         </div>
                         <div class="form-group">
                             <label>密码</label>
-                            <input name="password" class="form-control" type="password" placeholder="请输入密码">
+                            <input id="pwd" name="pwd" class="form-control" type="password" placeholder="请输入密码" required="required">
                         </div>
                         <div class="text-right">
-                            <button class="btn btn-primary" type="submit">登录</button>
+                            <button id="login-button" class="btn btn-primary" type="submit">登录</button>
                             <button class="btn btn-danger" data-dismiss="modal">取消</button>
                         </div>
-                        还没有账号？<a href="" data-toggle="modal" data-dismiss="modal" data-target="#register">点我注册</a>
+                        还没有账号？<a href="/register">点我注册</a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </nav>
+
+<div th:text="${nickname}"></div>
+<div th:text="${name}"></div>
 </body>
 </html>

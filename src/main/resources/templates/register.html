@@ -1,43 +1,72 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>注册新用户</title>
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-theme.css">
-    <script src="../static/js/jquery.js"></script>
-    <script src="../static/bootstrap/js/bootstrap.js"></script>
-    <script src="../static/bootstrap/js/npm.js"></script>
-    <link rel="stylesheet" href="../static/css/login.css">
+
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.css}">
+    <link rel="stylesheet" th:href="@{/register/css/register.css}">
+
+    <script th:src="@{/all/js/jquery.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+    <!--验证码模块-->
+    <script type="text/javascript">
+        function upLoadLoginValidateCode() {
+            $("#loginValidateCode").attr("src","/loginValidateCode?random="+new Date().getMilliseconds());
+        }
+    </script>
+
+
 </head>
 <body>
+    <div th:replace="index :: login"></div>
+    <div class="register-bg">
+        <img style="opacity: 70%" th:src="@{/register/img/register-background.jpg}" height="768" width="1519"/>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-                <form class="form-horizontal">
+                <form class="form-horizontal" th:action="@{/newregister}">
                     <span class="heading">注册</span>
+                    <div class="login">已有账户？<a data-toggle="modal" data-target="#login">点此登录</a></div>
+                    <div class="warning-message" style="color: red" th:text="${msg}" th:if="msg != null"></div>
                     <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="用户名或电子邮件">
-
+                        <label>用户名：</label>
+                        <input type="text" class="form-control" id="inputPhone" name="inputPhone" placeholder="请输入手机号作为用户名">
                     </div>
-                    <div class="form-group help">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="密　码">
-
-                        <a href="#" class="fa fa-question-circle"></a>
-                    </div>
-                    <div>没有账号，<a href="register.html">点此注册</a></div>
                     <div class="form-group">
-                        <div class="main-checkbox">
-                            <input type="checkbox" value="None" id="checkbox1" name="check"/>
-                            <label for="checkbox1"></label>
-                        </div>
-                        <span class="text">记住我</span>
-                        <button type="submit" class="btn btn-default">登录</button>
-
+                        <label>昵称：</label>
+                        <input type="text" class="form-control" id="inputName" name="inputName" placeholder="请输入你的昵称">
+                    </div>
+                    <div class="form-group">
+                        <label>密码：</label>
+                        <input type="password" class="form-control" id="inputPassword1" name="inputPassword1" placeholder="请输入你的密码">
+                    </div>
+                    <div class="form-group">
+                        <label>确认：</label>
+                        <input type="password" class="form-control" id="inputPassword2" name="inputPassword2" placeholder="请再次输入密码确认">
+                    </div>
+                    <div class="form-group">
+                        <label>验证码</label>
+                        <img id="loginValidateCode" src="/loginValidateCode" onclick="upLoadLoginValidateCode();" >
+                        <input type="text" class="form-control" style="width: 45%" id="validateCode" name="validateCode" placeholder="输入验证码">
+                        <div class="error" style="color: red"></div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default"  value="登录"></button>
+                    </div>
+                    <div class="form-group">
+                        <div class="error"></div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <nav style="min-height: 30px;background-color: black;" class="navbar navbar-fixed-bottom">
+        <div style="color: #ffffff;text-align: center;">
+            欢迎使用众食谱
+        </div>
+    </nav>
 </body>
 </html>

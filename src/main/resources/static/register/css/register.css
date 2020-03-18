@@ -6,29 +6,46 @@
     padding-bottom: 40px;
     border-radius: 15px;
     text-align: center;
+    margin-top: 50px;
 }
 .form-horizontal .heading{
     display: block;
     font-size: 35px;
     font-weight: 700;
-    padding: 35px 0;
-    border-bottom: 1px solid #f0f0f0;
+    padding-top: 35px;
+}
+.form-horizontal .login{
+    color: #9d9d9d;
+    padding-top: 10px;
     margin-bottom: 30px;
+    border-bottom: 1px solid #f0f0f0;
 }
 .form-horizontal .form-group{
     padding: 0 40px;
     margin: 0 0 25px 0;
-    position: relative;
 }
 .form-horizontal .form-control{
+    vertical-align:middle;
     background: #f0f0f0;
     border: none;
     border-radius: 20px;
     box-shadow: none;
-    padding: 0 20px 0 45px;
+    padding: 0 20px 0 20px;
     height: 40px;
     transition: all 0.3s ease 0s;
+    float: right;
+    width: 85%;
 }
+
+label{
+    vertical-align:middle;
+    float: left;
+    width: 15%;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 200;
+}
+
 .form-horizontal .form-control:focus{
     background: #e0e0e0;
     box-shadow: none;
@@ -124,4 +141,20 @@
     .form-horizontal .btn{
         padding: 10px 20px;
     }
+}
+
+.register-bg{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: url("/static/register/img/register-background.jpg");
+    background-size: cover;
+}
+
+#loginValidateCode{
+    cursor: pointer;
+}
+
+.warning-message{
+    color: red;
 }

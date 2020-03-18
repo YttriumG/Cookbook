@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginUser {
-    private int id;
-    private String name;
+    private int user_id;
+    private String login_id;
+    private String display_name;
     private String pwd;
     //1为可用，0为停用
     private boolean enable;
