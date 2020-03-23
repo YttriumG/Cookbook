@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>发布新菜谱-众食谱官网</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.css}">
+    <link rel="stylesheet" th:href="@{/css/publish.css}">
+
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+</head>
+<body style="background-color: #fff4e8">
+    <div th:replace="index :: topbar"></div>
+
+    <div class="container-fluid main">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <h2>编辑菜谱</h2>
+                <hr>
+                <form action="">
+                    <div class="form-group">
+                        <label for="recipe_name">菜谱名称：</label>
+                        <input type="text" class="form-control" id="recipe_name" placeholder="请输入你的菜谱名称">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe_description">菜品描述：</label>
+                        <textarea name="recipe_detail" id="recipe_description" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe_material">所需材料：</label>
+                        <textarea name="recipe_detail" id="recipe_material" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe_step">烹饪步骤：</label>
+                        <textarea name="recipe_detail" id="recipe_step" class="form-control" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">确认并发布</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                在此制作说明
+            </div>
+        </div>
+    </div>
+</body>
+</html>

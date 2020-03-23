@@ -47,7 +47,7 @@ public class loginConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers("/bootstrap/**","/all/**","/register/**");
+                .antMatchers("/bootstrap/**","/css/**","/img/**","/js/**");
         //忽略静态资源
     }
 }
