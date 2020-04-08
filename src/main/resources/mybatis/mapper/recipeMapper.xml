@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.mapper.recipeMapper">
+    <resultMap id="recipeMapper" type="com.system.pojo.recipe">
+        <id column="RECIPE_ID" jdbcType="INTEGER" property="id"/>
+        <result column="RECIPE_NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="RECIPE_PIC" jdbcType="VARCHAR" property="pic_url"/>
+        <result column="RECIPE_TYPE" jdbcType="VARCHAR" property="type"/>
+        <result column="RECIPE_DESCRIPTION" jdbcType="VARCHAR" property="description"/>
+        <result column="RECIPE_MATERIAL" jdbcType="VARCHAR" property="material"/>
+        <result column="RECIPE_STEP" jdbcType="VARCHAR" property="step"/>
+        <result column="RECIPE_TRICK" jdbcType="VARCHAR" property="trick"/>
+        <result column="CREATE_TIME" jdbcType="VARCHAR" property="create_time"/>
+        <result column="LAST_MODIFIED_TIME" jdbcType="VARCHAR" property="last_modified_time"/>
+        <result column="COMMENTS" jdbcType="BIGINT" property="comments"/>
+        <result column="VIEWS" jdbcType="BIGINT" property="views"/>
+        <result column="LIKES" jdbcType="BIGINT" property="likes"/>
+    </resultMap>
+
+    <insert id="create_recipe">
+        insert into recipes value (null,#{id},#{name},#{pic_url},#{type},#{description},#{material},#{step},#{trick},#{create_time},#{last_modified_time},#{comments},#{views},#{likes})
+    </insert>
+
+    <update id="update_recipe">
+        update recipes
+        set RECIPE_NAME=#{name},
+            RECIPE_PIC=#{pic_url},
+            RECIPE_TYPE=#{type},
+            RECIPE_DESCRIPTION=#{description},
+            RECIPE_MATERIAL=#{material},
+            RECIPE_STEP=#{step},
+            RECIPE_TRICK=#{trick},
+            CREATE_TIME=#{create_time},
+            LAST_MODIFIED_TIME=#{last_modified_time},
+            COMMENTS=#{comments},
+            VIEWS=#{views},
+            LIKES=#{likes}
+        where
+            RECIPE_ID=#{id}
+
+    </update>
+
+    <select id="get_all_recipes" resultMap="recipeMapper">
+        select * from recipes
+    </select>
+
+</mapper>

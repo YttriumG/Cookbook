@@ -1,0 +1,36 @@
+.navbar-nav > li > a{
+    padding-top:15px ;
+    padding-bottom:0 ;
+    height: 50px;
+}
+
+body{
+    background: #fae8c8;
+}
+
+.main{
+    margin: 50px 100px;
+    background-color: white;
+}
+
+.navbar navbar-default{
+    background-color: #ffe877;
+}
+.warning-message{
+    padding-left: 15px;
+    color: red;
+}
+img{
+    width: 232px;
+    height: 233px;
+}
+
+.text-desc{
+    font-size: 12px;
+    font-weight: normal;
+    color: #999999;
+}
+
+.page-bar{
+    float: right;
+}

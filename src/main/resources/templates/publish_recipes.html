@@ -18,30 +18,47 @@
             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                 <h2>编辑菜谱</h2>
                 <hr>
-                <form action="">
+                <form th:action="@{/publish}" method="post">
                     <div class="form-group">
                         <label for="recipe_name">菜谱名称：</label>
-                        <input type="text" class="form-control" id="recipe_name" placeholder="请输入你的菜谱名称">
+                        <input type="text" name="recipe_name" class="form-control" id="recipe_name" placeholder="请输入你的菜谱名称" th:value="${recipe_name}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe_type">菜品类型：</label>
+                        <input type="text" name="recipe_type" class="form-control" id="recipe_type" placeholder="请输入菜品类型" th:value="${recipe_type}">
+
                     </div>
                     <div class="form-group">
                         <label for="recipe_description">菜品描述：</label>
-                        <textarea name="recipe_detail" id="recipe_description" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="recipe_detail" id="recipe_description" class="form-control" cols="30" rows="10" th:text="${recipe_detail}"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="recipe_material">所需材料：</label>
-                        <textarea name="recipe_detail" id="recipe_material" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="recipe_material" id="recipe_material" class="form-control" cols="30" rows="10" th:text="${recipe_material}"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="recipe_step">烹饪步骤：</label>
-                        <textarea name="recipe_detail" id="recipe_step" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="recipe_step" id="recipe_step" class="form-control" cols="30" rows="10" th:text="${recipe_step}"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success">确认并发布</button>
+                        <label for="recipe_trick">小窍门</label>
+                        <textarea name="recipe_trick" id="recipe_trick" class="form-control" cols="30" rows="3" th:text="${recipe_trick}"></textarea>
+                    </div>
+                    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error!=null}"></div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-publish">确认并发布</button>
                     </div>
                 </form>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                在此制作说明
+                <div class="form-group" style="height: 20px;">
+                    <button type="button" class="btn btn-default btn-back" onclick="javascript:history.back(-1);" >返回</button>
+                </div>
+                <div class="form-group">
+                    在此制作说明
+                    [[${recipe}]]
+                </div>
+
             </div>
         </div>
     </div>

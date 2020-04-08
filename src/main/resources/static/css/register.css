@@ -147,7 +147,7 @@ label{
     position: fixed;
     left: 0;
     top: 0;
-    background: url("/static/img/register-background.jpg");
+    background: url("/img/register-background.jpg");
     background-size: cover;
 }
 
