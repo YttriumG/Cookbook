@@ -1,5 +1,6 @@
 package com.system.Controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.system.mapper.recipeMapper;
 import com.system.service.recipeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ public class publishController {
     @Autowired
     private recipeService recipeService;
 
+    @RequestMapping("/pub_ques")
+    public String pub_ques(){
+        return "publish_question";
+    }
+
     @RequestMapping("/pub_rec")
     public String enter(){
         return "publish_recipes";
@@ -25,13 +31,16 @@ public class publishController {
 
     @PostMapping("/publish")
     public String newrecipes(@RequestParam(required = false, value = "recipe_name") String name,
+                             @RequestParam(required = false, value = "recipe_pic") String pic,
                              @RequestParam(required = false, value = "recipe_type") String type,
                              @RequestParam(required = false, value = "recipe_detail") String detail,
                              @RequestParam(required = false, value = "recipe_material") String material,
                              @RequestParam(required = false, value = "recipe_step") String step,
                              @RequestParam(required = false, value = "recipe_trick") String trick,
                              Model model){
+
         model.addAttribute("recipe_name",name);
+        model.addAttribute("recipe_pic",pic);
         model.addAttribute("recipe_type",type);
         model.addAttribute("recipe_detail",detail);
         model.addAttribute("recipe_material",material);
@@ -41,6 +50,9 @@ public class publishController {
         if (name == "" || name == null){
             model.addAttribute("error","菜谱名称不能为空！");
             return "publish_recipes";
+        }
+        if (pic == "" || pic == null){
+            model.addAttribute("error","图片信息不能为空！");
         }
         if (type == "" || type == null){
             model.addAttribute("error","菜谱种类不能为空！");
@@ -58,7 +70,7 @@ public class publishController {
             model.addAttribute("error","烹饪步骤不能为空！");
             return "publish_recipes";
         }
-        String a = "名称："+name+"\n种类："+type+"\n描述："+detail+"\n材料："+material+"\n步骤："+step+trick;
+        String a = "名称："+name+"\nURL:"+pic+"\n种类："+type+"\n描述："+detail+"\n材料："+material+"\n步骤："+step+trick;
         System.out.println(a);
 
         model.addAttribute("recipe",a);

@@ -1,0 +1,32 @@
+body{
+    background: #FDF5E6;
+}
+
+
+.error-container{
+    margin: 30px auto 30px;
+    background-color: white;
+    border-radius: 10px;
+    width:980px;
+}
+
+.btn-return{
+    background: #FFEBCD;
+    padding: 0 20px;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px solid transparent;
+    transition: all 1s ease 0s;
+}
+
+.btn-return:hover{
+    background: #ffcea3;
+}
+
+.error{
+    margin-top: 50px;
+    font-size: 25px;
+    color: #8B8989;
+}

@@ -5,7 +5,7 @@
 }
 
 body{
-    background: #fae8c8;
+    background: #FDF5E6;
 }
 
 .main{
@@ -20,10 +20,6 @@ body{
     padding-left: 15px;
     color: red;
 }
-img{
-    width: 232px;
-    height: 233px;
-}
 
 .text-desc{
     font-size: 12px;
@@ -33,4 +29,40 @@ img{
 
 .page-bar{
     float: right;
+}
+
+.media-object{
+    height: 70px;
+    width: 70px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.media-body{
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.img-object{
+    height: 232px; !important;
+    width: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-img{
+    width: 950px;
+    height: 400px;
+}
+.item{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.carousel-inner{
+    width: 950px;
+    height: 450px;
 }

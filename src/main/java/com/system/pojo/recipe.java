@@ -24,6 +24,7 @@ public class recipe {
     private long comments;
     private long views;
     private long likes;
+    private int author;
 }
 
 

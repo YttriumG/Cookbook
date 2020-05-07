@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.system.mapper.loginMapper">
-    <resultMap id="resultMap" type="com.system.pojo.LoginUser">
+    <resultMap id="LoginUser" type="com.system.pojo.LoginUser">
         <result column="user_id" jdbcType="INTEGER" property="user_id" />
         <result column="login_id" jdbcType="VARCHAR" property="login_id"/>
         <result column="display_name" jdbcType="VARCHAR" property="display_name"/>
@@ -16,7 +16,7 @@
         SELECT * FROM login WHERE login_id = #{login_id} and pwd = #{pwd}
     </select>
 
-    <select id="selectUser" resultType="LoginUser" parameterType="String">
+    <select id="selectUser" resultType="LoginUser" parameterType="LoginUser">
         select * from login where login_id = #{login_id}
     </select>
 

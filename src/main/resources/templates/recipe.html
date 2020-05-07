@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${recipe.name}]]</title>
+    <link rel="icon" th:href="@{/img/logo.ico}"  type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-theme.css}">
+    <link rel="stylesheet" th:href="@{/css/recipe.css}">
+
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+</head>
+<body style="background-color: #fff4e8">
+<div th:replace="index :: topbar"></div>
+
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-4" style="padding: 0">
+            <img class="main-image" th:src="@{/img/recipe/}+${recipe.id}+-main.jpg">
+        </div>
+        <div  class="col-lg-8 col-md-8 col-sm-8 mainInfo">
+            <div id="name" class="col-lg-6 col-md-6 col-sm-6" style="height: 100px">
+                <h2 class="title">[[${recipe.name}]]</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" style="height: 100px" >
+                <div class="liked">
+                    <a id="liked" class="liked-number text-center" >
+                        <span class=" glyphicon glyphicon-heart-empty"></span>&nbsp;([[${recipe.likes}]])
+                    </a><a class="liked-share text-center" >
+                        分享
+                    </a>
+                </div>
+            </div>
+            <div id="info2" class="col-lg-12 col-md-12 col-sm-12 info2">
+                <span>分类</span>
+                <span class="label label-success" th:each="type : ${type}">[[${type}]]</span>
+            </div>
+            <hr style="margin-top: 3px">
+            <p id="description" class="col-lg-12 col-md-12 col-sm-12 description">
+                [[${recipe.description}]]
+            </p>
+            <hr style="margin-top: 3px">
+            <div id="userinfo" class="col-lg-12 col-md-12 col-sm-12">
+                <a><img class="icon-user" th:src="${user.user_photo}"></a>
+                <div class="user-info">
+                    <a><span>[[${user.display_name}]]</span></a>
+                    <div>菜谱：[[${user.user_upload}]]&nbsp;/&nbsp;关注：[[${user.user_follow}]]&nbsp;/&nbsp;粉丝：[[${user.user_fans}]]</div>
+                    <span id="info" class="col-lg-12 col-md-12 col-sm-12 info">
+                        最新修改时间：[[${recipe.last_modified_time}]] &nbsp;|&nbsp;阅读量：[[${recipe.views}]]
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>

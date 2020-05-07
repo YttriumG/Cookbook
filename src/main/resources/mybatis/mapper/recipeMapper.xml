@@ -18,10 +18,11 @@
         <result column="COMMENTS" jdbcType="BIGINT" property="comments"/>
         <result column="VIEWS" jdbcType="BIGINT" property="views"/>
         <result column="LIKES" jdbcType="BIGINT" property="likes"/>
+        <result column="AUTHOR" jdbcType="INTEGER" property="author"/>
     </resultMap>
 
     <insert id="create_recipe">
-        insert into recipes value (null,#{id},#{name},#{pic_url},#{type},#{description},#{material},#{step},#{trick},#{create_time},#{last_modified_time},#{comments},#{views},#{likes})
+        insert into recipes value (null,#{id},#{name},#{pic_url},#{type},#{description},#{material},#{step},#{trick},#{create_time},#{last_modified_time},#{comments},#{views},#{likes},#{author})
     </insert>
 
     <update id="update_recipe">
@@ -47,4 +48,30 @@
         select * from recipes
     </select>
 
+    <select id="getLatest" resultMap="recipeMapper">
+        select *
+        from recipes
+        order by LAST_MODIFIED_TIME desc
+        limit 3
+    </select>
+    <select id="getPopular" resultMap="recipeMapper">
+        select *
+        from recipes
+        order by LIKES desc
+        limit 6
+    </select>
+    <select id="selectById" resultMap="recipeMapper">
+        select *
+        from recipes
+        where RECIPE_ID = #{id}
+    </select>
+    <select id="getUser" resultType="User">
+        select *
+        from user
+        where user_id in (
+            select AUTHOR
+            from recipes
+            where RECIPE_ID = #{id}
+        )
+    </select>
 </mapper>

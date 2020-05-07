@@ -1,6 +1,7 @@
 package com.system.mapper;
 
 import com.github.pagehelper.Page;
+import com.system.pojo.User;
 import com.system.pojo.recipe;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -17,5 +18,9 @@ public interface recipeMapper {
 
     @Select("select count(1) from recipes")
     int count();
+    List<recipe> getPopular();
+    List<recipe> getLatest();
 
+    recipe selectById(int id);
+    User getUser(int id);
 }

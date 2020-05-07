@@ -1,4 +1,5 @@
 spring:
+
   #禁止缓存
   thymeleaf:
     cache: false

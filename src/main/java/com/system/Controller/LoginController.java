@@ -24,8 +24,8 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String tologin(
-            @RequestParam("username") String username,
-            @RequestParam("pwd") String password,
+            @RequestParam(value = "username", required=false) String username,
+            @RequestParam(value = "password", required=false) String password,
             HttpServletRequest request,
             Model model) {
         HttpSession session = request.getSession();
