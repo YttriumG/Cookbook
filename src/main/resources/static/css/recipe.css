@@ -57,7 +57,7 @@ a:hover {
     background-color: #F8F8FF;
     color: grey;
     border: 1px solid #e5e5e5;
-    width: 170px;
+    width: 150px;
     line-height: 50px;
     border: 1px solid #e5e5e5;
 }
@@ -115,6 +115,49 @@ a:hover {
 .user-info>div{
     margin-bottom: 10px;
     margin-top: 5px;
+}
+
+.ZhuLiao{
+    height: auto;
+}
+#ZhuLiao{
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap:wrap;
+}
+
+.FuLiao{
+    height: auto;
+}
+
+#FuLiao{
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap:wrap;
+}
+#FuLiao>div{
+    width:auto;
+}
+
+.label-danger{
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px 10px;
+    margin: auto 20px ;
+}
+
+.label-default{
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px 10px;
+    margin: auto 20px ;
+    background-color: #F5F5F5;
+    color: grey;
+    border: 1px solid #DCDCDC;
 }
 
 .mainInfo{

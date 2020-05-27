@@ -1,15 +1,12 @@
 package com.system.Controller;
 
-import com.alibaba.fastjson.JSONArray;
+
 import com.system.mapper.recipeMapper;
 import com.system.service.recipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class publishController {
@@ -18,6 +15,11 @@ public class publishController {
 
     @Autowired
     private recipeService recipeService;
+
+    @GetMapping("/publish/{id}")
+    public String edit(@PathVariable("id")Integer id){
+        return "publish";
+    }
 
     @RequestMapping("/pub_ques")
     public String pub_ques(){

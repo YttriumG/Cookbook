@@ -1,14 +1,15 @@
 package com.system.service;
 
+
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.system.mapper.recipeMapper;
 import com.system.pojo.User;
 import com.system.pojo.recipe;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,17 @@ public class recipeService {
             }
             return list;
         }else return null;
+    }
+
+    //获取菜谱食材
+    public List<List> main_material(int id){
+        recipe recipe = recipeMapper.selectById(id);
+        String jsonstr = recipe.getMaterial();
+        List<List> material = new ArrayList<>();
+        if (jsonstr != null){
+            JSONObject jsonObject = JSONObject.fromObject(jsonstr);
+        }
+        return material;
     }
 
     //获取上传菜谱的用户
