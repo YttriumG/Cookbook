@@ -22,17 +22,17 @@ public class indexController {
     private recipeService recipeService;
 
     @GetMapping({"/","/index","/welcome"})
-    public String loginsucceed(LoginUser user,
-                               Model model,
+    public String loginsucceed(Model model,
                                HttpServletRequest request,
                                @RequestParam(name = "page", defaultValue = "1") int page,
                                @RequestParam(name = "size", defaultValue = "3") int size){
         //用户登录模块
         HttpSession session = request.getSession();
-        user.setDisplay_name((String) session.getAttribute("nickname"));
-        user.setLogin_id((String) session.getAttribute("name"));
-        model.addAttribute("nickname",session.getAttribute("nickname"));
-        model.addAttribute("name",session.getAttribute("name"));
+        String nickname = (String) session.getAttribute("nickname");
+        Integer id = (Integer) session.getAttribute("id") ;
+        System.out.println("2222222"+nickname+id);
+        model.addAttribute("nickname",nickname);
+        model.addAttribute("id",id);
 
             //输出Session内容
             for (Enumeration e = session.getAttributeNames();e.hasMoreElements();){

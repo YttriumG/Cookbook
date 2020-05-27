@@ -39,10 +39,10 @@ public class LoginController {
         }else{
             user = loginMapper.loginUser(u);
             if (user != null){
-                session.setAttribute("name",user.getLogin_id());
+                session.setAttribute("id",user.getUser_id());
                 session.setAttribute("pwd",user.getPwd());
                 session.setAttribute("nickname",user.getDisplay_name());
-                model.addAttribute("user",user);
+                model.addAttribute("Login",user);
                 return "redirect:/welcome";
             }else{
                 model.addAttribute("msg","密码错误，请重新输入！");

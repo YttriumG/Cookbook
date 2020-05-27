@@ -22,8 +22,14 @@ public class recipeController {
 
     @GetMapping("/recipe/{id}")
     public String recipe(@PathVariable("id") int id, HttpServletRequest request, Model model){
+        //持久化登录
         HttpSession session = request.getSession();
-        LoginUser loginUser = (LoginUser) session.getAttribute("user");
+        model.addAttribute("nickname",session.getAttribute("nickname"));
+        model.addAttribute("id",session.getAttribute("id"));
+        System.out.println(session.getAttribute("nickname"));
+        System.out.println(session.getAttribute("id"));
+
+        //获取菜谱
         recipe recipe = recipeService.selectByID(id);
         List<String> type = recipeService.type(id);
         User user = recipeService.getUser(id);

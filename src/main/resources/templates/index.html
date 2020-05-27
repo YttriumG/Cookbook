@@ -48,13 +48,13 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <button style="margin-top: 8px" type="button" class="btn btn-default" data-toggle="modal" data-target="#login" th:if="${name == null}" >
+                    <button style="margin-top: 8px" type="button" class="btn btn-default" data-toggle="modal" data-target="#login" th:if="${nickname == null}" >
                         <span class="glyphicon glyphicon-log-in"></span>&nbsp;
                         登录
                     </button>
                 </li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" th:unless="${name == null}">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" th:unless="${nickname == null}">
                         <span class="glyphicon glyphicon-plus"></span>&nbsp;
                         发布
                     </a>
@@ -65,7 +65,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" th:unless="${name == null}" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" th:unless="${nickname == null}" >
                         [[${nickname}]]
                         <span class="caret"></span>
                     </a>
