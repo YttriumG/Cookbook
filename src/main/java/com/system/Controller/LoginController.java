@@ -3,7 +3,8 @@ package com.system.Controller;
 import com.system.mapper.loginMapper;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.system.Util.RamdomValidateCodeUtil;
-import com.system.pojo.LoginUser;
+import com.system.pojo.User;
+import com.system.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,34 +21,24 @@ import java.util.List;
 @Controller
 public class LoginController {
     @Autowired
-    private loginMapper loginMapper;
+    private LoginService loginService;
 
     @RequestMapping("/login")
     public String tologin(
-            @RequestParam(value = "username", required=false) String username,
+            @RequestParam(value = "username", required=false) String loginid,
             @RequestParam(value = "password", required=false) String password,
             HttpServletRequest request,
             Model model) {
         HttpSession session = request.getSession();
-        LoginUser u = new LoginUser();
-        u.setPwd(password);
-        u.setLogin_id(username);
-        LoginUser user = loginMapper.selectUser(username);
+        User user = loginService.loginUser(loginid,password);
         if (user == null) {
-            model.addAttribute("msg","用户名不存在！请重新输入");
+            model.addAttribute("msg","用户名或密码错误！请重新输入");
             return "index";
         }else{
-            user = loginMapper.loginUser(u);
-            if (user != null){
-                session.setAttribute("id",user.getUser_id());
-                session.setAttribute("pwd",user.getPwd());
-                session.setAttribute("nickname",user.getDisplay_name());
-                model.addAttribute("Login",user);
-                return "redirect:/welcome";
-            }else{
-                model.addAttribute("msg","密码错误，请重新输入！");
-                return "index";
-            }
+            session.setAttribute("id",user.getUser_id());
+            session.setAttribute("nickname",user.getDisplay_name());
+            model.addAttribute("Loginuser",user);
+            return "redirect:/welcome";
         }
     }
 
@@ -103,15 +94,15 @@ public class LoginController {
                 return "register";
             }else{
                 System.out.println("new User!");
-                LoginUser user = new LoginUser();
-                user.setLogin_id(login_id);
+                User user = new User();
+                user.setUser_tel(login_id);
                 user.setDisplay_name(display_name);
-                user.setPwd(password);
-                user.setEnable(true);
-                loginMapper.addUser(user);
+                user.setUser_password(password);
+                user.setUser_privilege(1);
+                loginService.addUser(user);
                 HttpSession session = request.getSession();
                 session.setAttribute("nickname",display_name);
-                session.setAttribute("name",login_id);
+                session.setAttribute("tel",login_id);
                 return "redirect:/welcome";
             }
         }

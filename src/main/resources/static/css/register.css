@@ -144,11 +144,7 @@ label{
 }
 
 .register-bg{
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: url("/img/register-background.jpg");
-    background-size: cover;
+    position: relative;
 }
 
 #loginValidateCode{
@@ -157,4 +153,13 @@ label{
 
 .warning-message{
     color: red;
+}
+.bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: url("/img/register-background.jpg") no-repeat center fixed;
+    background-size: 100% ;
+
 }

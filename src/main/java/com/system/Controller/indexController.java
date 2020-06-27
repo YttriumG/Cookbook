@@ -30,7 +30,6 @@ public class indexController {
         HttpSession session = request.getSession();
         String nickname = (String) session.getAttribute("nickname");
         Integer id = (Integer) session.getAttribute("id") ;
-        System.out.println("2222222"+nickname+id);
         model.addAttribute("nickname",nickname);
         model.addAttribute("id",id);
 

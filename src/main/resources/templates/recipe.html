@@ -83,13 +83,13 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6" style="height: 100px" >
                 <div class="liked">
-                    <a id="liked" class="liked-number text-center" >
+                    <a id="liked" class="liked-number text-center" onclick="">
                         <span class=" glyphicon glyphicon-heart-empty"></span>&nbsp;
                         ([[${recipe.likes}]])
                     </a><a class="liked-share text-center" >
                         分享
                     </a>
-                    <a th:if="${user != null && user.user_id == recipe.author}">
+                    <a th:if="${user != null && user.user_id == id}" th:href="@{/publish/}+${recipe.id}">
                         <span class="glyphicon glyphicon-pencil"></span>&nbsp;
                         编辑
                     </a>
@@ -105,14 +105,15 @@
             </p>
             <hr style="margin-top: 3px">
             <div id="userinfo" class="col-lg-12 col-md-12 col-sm-12" th:if="${user!=null}">
-                <a><img class="icon-user" th:src="${user.user_photo}"></a>
-                <div class="user-info">
-                    <a><span>[[${user.display_name}]]</span></a>
-                    <div>菜谱：[[${user.user_upload}]]&nbsp;/&nbsp;关注：[[${user.user_follow}]]&nbsp;/&nbsp;粉丝：[[${user.user_fans}]]</div>
-                    <span id="info" class="col-lg-12 col-md-12 col-sm-12 info">
-                        最新修改时间：[[${recipe.last_modified_time}]] &nbsp;|&nbsp;阅读量：[[${recipe.views}]]
-                    </span>
-                </div>
+                <a th:href="@{/User/}+${user.user_id}"><img class="icon-user" th:src="${user.user_photo}">
+                    <div class="user-info">
+                        <a><span>[[${user.display_name}]]</span></a>
+                        <div>菜谱：2&nbsp;/&nbsp;关注：[[${user.user_follow}]]&nbsp;/&nbsp;粉丝：[[${user.user_fans}]]</div>
+                        <span id="info" class="col-lg-12 col-md-12 col-sm-12 info">
+                            最新修改时间：[[${recipe.last_modified_time}]] &nbsp;|&nbsp;阅读量：[[${recipe.views}]]
+                        </span>
+                    </div>
+                </a>
 
             </div>
 

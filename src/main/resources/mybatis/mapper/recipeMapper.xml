@@ -22,23 +22,19 @@
     </resultMap>
 
     <insert id="create_recipe">
-        insert into recipes value (null,#{id},#{name},#{pic_url},#{type},#{description},#{material},#{step},#{trick},#{create_time},#{last_modified_time},#{comments},#{views},#{likes},#{author})
+        insert into recipes value (null,#{name},#{pic_url},#{type},#{description},#{material},#{step},#{trick},#{create_time},#{last_modified_time},0,0,0,#{author})
     </insert>
 
     <update id="update_recipe">
         update recipes
         set RECIPE_NAME=#{name},
-            RECIPE_PIC=#{pic_url},
+            RECIPE_PIC=#{pic},
             RECIPE_TYPE=#{type},
             RECIPE_DESCRIPTION=#{description},
             RECIPE_MATERIAL=#{material},
             RECIPE_STEP=#{step},
             RECIPE_TRICK=#{trick},
-            CREATE_TIME=#{create_time},
-            LAST_MODIFIED_TIME=#{last_modified_time},
-            COMMENTS=#{comments},
-            VIEWS=#{views},
-            LIKES=#{likes}
+            LAST_MODIFIED_TIME=#{last_modified_time}
         where
             RECIPE_ID=#{id}
 
@@ -74,4 +70,6 @@
             where RECIPE_ID = #{id}
         )
     </select>
+
+
 </mapper>

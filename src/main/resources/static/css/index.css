@@ -46,8 +46,11 @@ body{
     white-space: nowrap;
 }
 
+.thumbnail >img{
+    height: 233px;
+}
+
 .img-object{
-    height: 232px; !important;
     width: auto;
     object-fit: cover;
     display: block;

@@ -4,32 +4,42 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.system.mapper.loginMapper">
-    <resultMap id="LoginUser" type="com.system.pojo.LoginUser">
-        <result column="user_id" jdbcType="INTEGER" property="user_id" />
-        <result column="login_id" jdbcType="VARCHAR" property="login_id"/>
-        <result column="display_name" jdbcType="VARCHAR" property="display_name"/>
-        <result column="pwd" jdbcType="VARCHAR" property="pwd"/>
-        <result column="enabled" jdbcType="TINYINT" property="enabled"/>
-    </resultMap>
 
-    <select id="loginUser"  parameterType="LoginUser" resultType="LoginUser">
-        SELECT * FROM login WHERE login_id = #{login_id} and pwd = #{pwd}
+
+    <select id="loginUser"  resultType="User">
+        SELECT * FROM user WHERE user_tel = #{user_tel} and user_password = #{user_password}
     </select>
 
-    <select id="selectUser" resultType="LoginUser" parameterType="LoginUser">
-        select * from login where login_id = #{login_id}
+    <select id="selectUser" resultType="User" parameterType="int">
+        select * from user where user_tel = #{user_tel}
     </select>
 
-    <insert id="addUser" parameterType="LoginUser">
-        insert into login value (null,#{login_id},#{display_name},#{pwd},1)
+    <insert id="addUser" parameterType="User">
+        insert into user value (null,#{user_tel},#{display_name},#{user_password},null,null,null,0,0,#{registration_time},1)
     </insert>
 
-    <update id="updateUser" parameterType="LoginUser">
-        update login set user_id=#{user_id}, login_id=#{login_id}, display_name=#{display_name}, pwd=#{pwd}, enabled=#{enabled} where user_id=#{user_id}
+    <update id="updateUser" parameterType="User">
+        update user
+        set
+            display_name=#{display_name}
+            user_password=#{user_password},
+            user_introduce=#{user_introduce},
+            user_place=#{user_place},
+            user_photo=#{user_photo},
+            user_fans=#{user_fans},
+            user_follow=#{user_follow},
+            registration_time=#{registration_time},
+            user_privilege=#{user_privilege}
+        where
+            user_id=#{user_id}
     </update>
 
-    <select id="findAllUser" resultType="LoginUser">
-        SELECT * FROM login
+    <select id="findAllUser" resultType="User">
+        SELECT * FROM user
+    </select>
+    <select id="selectUserbyName" resultType="com.system.pojo.User">
+        SELECT * FROM USER
+        WHERE display_name = #{display_name}
     </select>
 
 </mapper>

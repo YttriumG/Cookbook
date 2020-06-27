@@ -21,9 +21,8 @@
 </head>
 <body>
     <div th:replace="index :: login"></div>
-    <div class="register-bg">
-        <img style="opacity: 70%" th:src="@{/img/register-background.jpg}" style="height: auto;width: auto;"/>
-    </div>
+    <img class="bg" style="opacity: 70%;height: auto;width: auto;background-size:contain;" th:src="@{/img/register-background.jpg}" />
+
     <div class="container">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
@@ -54,7 +53,7 @@
                         <div class="error" style="color: red"></div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default" >登录</button>
+                        <button type="submit" class="btn btn-default" >注册</button>
                     </div>
                     <div class="form-group">
                         <div class="error"></div>

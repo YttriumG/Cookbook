@@ -25,8 +25,8 @@
                         <input type="text" name="recipe_name" class="form-control" id="recipe_name" placeholder="请输入你的菜谱名称" th:value="${recipe_name}">
                     </div>
                     <div class="form-group">
-                        <label for="recipe_pic">菜谱名称：</label>
-                        <input type="file" name="recipe_pic" class="form-control" id="recipe_pic" th:value="${recipe_pic}">
+                        <label for="recipe_pic">菜谱图片：</label>
+                        <input type="text" name="recipe_pic" class="form-control" id="recipe_pic" placeholder="菜谱图片地址" th:value="${recipe_pic}">
                     </div>
                     <div class="form-group">
                         <label for="recipe_type">菜品类型：</label>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error!=null}"></div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-publish">确认并发布</button>
+                        <button type="submit" class="btn btn-success btn-publish" >确认并发布</button>
                     </div>
                 </form>
             </div>

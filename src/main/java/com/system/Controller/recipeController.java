@@ -44,13 +44,6 @@ public class recipeController {
         }
     }
 
-    @PostMapping("/material")
-    @ResponseBody
-    public String material(int id){
-        String info;
-
-        return "info";
-    }
 
 
 }

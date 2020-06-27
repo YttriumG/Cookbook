@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface recipeMapper {
     int create_recipe(recipe recipe);
-    int update_recipe(recipe recipe);
+    int update_recipe(int id,String name,String pic,String type,String description,String material,String step,String trick,String last_modified_time);
     Page<recipe> get_all_recipes();
 
     @Select("select count(1) from recipes")
@@ -23,4 +23,5 @@ public interface recipeMapper {
 
     recipe selectById(int id);
     User getUser(int id);
+
 }

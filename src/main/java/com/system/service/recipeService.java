@@ -73,4 +73,25 @@ public class recipeService {
         System.out.println(user);
         return user;
     }
+
+    //更新菜谱信息
+    public recipe update(recipe newrecipe){
+        int id = newrecipe.getId();
+        String name = newrecipe.getName();
+        String pic = newrecipe.getPic_url();
+        String type = newrecipe.getType();
+        String description = newrecipe.getDescription();
+        String material = newrecipe.getMaterial();
+        String step = newrecipe.getStep();
+        String last_modified_time = newrecipe.getLast_modified_time();
+        String trick = newrecipe.getTrick();
+        recipeMapper.update_recipe(id,name,pic,type,description,material,step,trick,last_modified_time);
+        return newrecipe;
+    }
+
+    //创建新菜谱
+    public recipe create(recipe recipe){
+        recipeMapper.create_recipe(recipe);
+        return recipe;
+    }
 }
